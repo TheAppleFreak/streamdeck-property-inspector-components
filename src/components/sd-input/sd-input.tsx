@@ -19,7 +19,7 @@ export class SdInput {
     /**
      * A predefined value for the input. Defaults to an empty string (` `)
      */
-    @Prop() value?: string;
+    @Prop({reflect: true}) value?: string;
 
     /**
      * The placeholder value for the input field
@@ -41,17 +41,24 @@ export class SdInput {
      */
     @Prop() inputmode?: "none" | "text" | "decimal" | "numeric" | "tel" | "search" | "email" | "url";
 
-    @Event() inputUpdate: EventEmitter<string>;
+    @Event() changeUpdate: EventEmitter<string>;
+    changeUpdateHandler = (ev: InputEvent) => {
+        this.changeUpdate.emit((ev.target as HTMLInputElement).value);
+    }
 
+    @Event() inputUpdate: EventEmitter<{data: string | null, inputType: string}>;
     inputUpdateHandler = (ev: InputEvent) => {
-        this.inputUpdate.emit((ev.target as HTMLInputElement).value);
+        this.inputUpdate.emit({
+            data: ev.data,
+            inputType: ev.inputType
+        });
     }
 
     render() {
         return (
             <Host>
                 <div class="label">{this.label}</div>
-                <input class="value" type={this.type} value={this.value} required={this.required} onChange={this.inputUpdateHandler} />
+                <input class="value" type={this.type} value={this.value} required={this.required} onChange={this.changeUpdateHandler} onInput={this.inputUpdateHandler}/>
             </Host>
         );
     }

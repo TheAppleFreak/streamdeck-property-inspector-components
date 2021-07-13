@@ -1,0 +1,33 @@
+@import "../common";
+
+textarea {
+    // There was contradictory source styles for this element
+    // I'm using the ones that come latest in the stylesheet
+    width: 98%;
+    height: 96%;
+    min-height: 6rem;
+    word-break: break-word;
+    line-height: 1.5rem;
+    resize: none;
+    border-radius: var(--sdpi-borderradius);
+
+    & + label {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    .value > & {
+        width: 219px;
+        margin-left: 1px;
+        margin-right: 3px;
+        padding: 4px;
+    }
+}
+
+.textarea {
+    padding: 0px !important;
+}

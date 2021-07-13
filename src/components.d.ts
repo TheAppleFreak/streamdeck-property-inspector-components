@@ -6,6 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface SdDetails {
+    }
+    interface SdHeader {
+    }
     interface SdInput {
         /**
           * The input mode to use for virtual keyboards
@@ -38,8 +42,33 @@ export namespace Components {
     }
     interface SdRoot {
     }
+    interface SdTextarea {
+        /**
+          * The display label for the textarea
+         */
+        "label": string;
+        "maxLength": number;
+        "minLength": number;
+        "name"?: string;
+        "placeholder"?: string;
+        "readonly": boolean;
+        "required": boolean;
+        "value"?: string;
+    }
 }
 declare global {
+    interface HTMLSdDetailsElement extends Components.SdDetails, HTMLStencilElement {
+    }
+    var HTMLSdDetailsElement: {
+        prototype: HTMLSdDetailsElement;
+        new (): HTMLSdDetailsElement;
+    };
+    interface HTMLSdHeaderElement extends Components.SdHeader, HTMLStencilElement {
+    }
+    var HTMLSdHeaderElement: {
+        prototype: HTMLSdHeaderElement;
+        new (): HTMLSdHeaderElement;
+    };
     interface HTMLSdInputElement extends Components.SdInput, HTMLStencilElement {
     }
     var HTMLSdInputElement: {
@@ -52,12 +81,25 @@ declare global {
         prototype: HTMLSdRootElement;
         new (): HTMLSdRootElement;
     };
+    interface HTMLSdTextareaElement extends Components.SdTextarea, HTMLStencilElement {
+    }
+    var HTMLSdTextareaElement: {
+        prototype: HTMLSdTextareaElement;
+        new (): HTMLSdTextareaElement;
+    };
     interface HTMLElementTagNameMap {
+        "sd-details": HTMLSdDetailsElement;
+        "sd-header": HTMLSdHeaderElement;
         "sd-input": HTMLSdInputElement;
         "sd-root": HTMLSdRootElement;
+        "sd-textarea": HTMLSdTextareaElement;
     }
 }
 declare namespace LocalJSX {
+    interface SdDetails {
+    }
+    interface SdHeader {
+    }
     interface SdInput {
         /**
           * The input mode to use for virtual keyboards
@@ -67,7 +109,8 @@ declare namespace LocalJSX {
           * The display label for the input
          */
         "label"?: string;
-        "onInputUpdate"?: (event: CustomEvent<string>) => void;
+        "onChangeUpdate"?: (event: CustomEvent<string>) => void;
+        "onInputUpdate"?: (event: CustomEvent<{data: string | null, inputType: string}>) => void;
         /**
           * A validation regex for the input. Will show a checkmark next to the input when validated
          */
@@ -91,17 +134,38 @@ declare namespace LocalJSX {
     }
     interface SdRoot {
     }
+    interface SdTextarea {
+        /**
+          * The display label for the textarea
+         */
+        "label"?: string;
+        "maxLength"?: number;
+        "minLength"?: number;
+        "name"?: string;
+        "onChangeUpdate"?: (event: CustomEvent<string>) => void;
+        "onInputUpdate"?: (event: CustomEvent<{data: string | null, inputType: string}>) => void;
+        "placeholder"?: string;
+        "readonly"?: boolean;
+        "required"?: boolean;
+        "value"?: string;
+    }
     interface IntrinsicElements {
+        "sd-details": SdDetails;
+        "sd-header": SdHeader;
         "sd-input": SdInput;
         "sd-root": SdRoot;
+        "sd-textarea": SdTextarea;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "sd-details": LocalJSX.SdDetails & JSXBase.HTMLAttributes<HTMLSdDetailsElement>;
+            "sd-header": LocalJSX.SdHeader & JSXBase.HTMLAttributes<HTMLSdHeaderElement>;
             "sd-input": LocalJSX.SdInput & JSXBase.HTMLAttributes<HTMLSdInputElement>;
             "sd-root": LocalJSX.SdRoot & JSXBase.HTMLAttributes<HTMLSdRootElement>;
+            "sd-textarea": LocalJSX.SdTextarea & JSXBase.HTMLAttributes<HTMLSdTextareaElement>;
         }
     }
 }

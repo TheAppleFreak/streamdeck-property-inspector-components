@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
+    <title>SDPI Test</title>
 
     <script type="module" src="/build/sdpi-components.esm.js"></script>
     <script nomodule src="/build/sdpi-components.js"></script>
@@ -13,7 +13,13 @@
 
 <body>
     <sd-root>
+        <sd-header>Inputs</sd-header>
         <sd-input label="bleh"></sd-input>
+        <sd-input label="predefined value" value="something idk"></sd-input>
+        
+        <sd-header>Textarea</sd-header>
+        <sd-textarea id="textarea-simple" label="Simple"></sd-textarea>
+        <sd-textarea id="textarea-maxlength" label="With max length" maxLength=50></sd-textarea>
     </sd-root>
 </body>
 </html>

@@ -1,0 +1,21 @@
+@import "../common";
+
+:host {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    color: inherit;
+    font-size: 9pt;
+    margin: 8px 0px;
+
+    &::before,
+    &::after {
+        content: "";
+        flex-grow: 1;
+        background: var(--sdpi-background);
+        height: 1px;
+        font-size: 0px;
+        line-height: 0px;
+        margin: 0px 16px;
+    }
+}
