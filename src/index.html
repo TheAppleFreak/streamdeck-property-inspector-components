@@ -23,7 +23,12 @@
                 alt-text="This field lets you enter an IP-Adress. The little exclamation mark changes to a checkmark, if the condition is met (e.g. you entered an IP-address.)."
             ></sd-input>
             <sd-input label="Password" type="password" placeholder="Enter your password"></sd-input>
-            <sd-input label="Email" type="email" placeholder="Enter your email-address"></sd-input>
+            <sd-input 
+                label="Email" 
+                type="email" 
+                placeholder="Enter your email-address"
+                pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+            ></sd-input>
             <sd-input label="Number" type="number"></sd-input>
 
             <sd-header>TEXTAREAS</sd-header>
@@ -38,6 +43,15 @@
             </sd-details>
 
             <sd-header>BUTTONS</sd-header>
+            <sd-button label="Button" value="Click Me"></sd-button>
+            <sd-button label="Button" value="Click Me max20" fill=false>Click Me</sd-button>
+            <sd-button-group label="2 Buttons">
+                <sd-button include-label=false value="Click Me"></sd-button>
+                <sd-button include-label=false value="Or Me"></sd-button>
+            </sd-button-group>
+
+            <sd-header>SELECTS</sd-header>
+            
         </sd-root>
         <div class="sdpi-wrapper">
 

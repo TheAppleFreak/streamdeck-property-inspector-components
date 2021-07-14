@@ -38,6 +38,18 @@
     }
 }
 
+::-webkit-calendar-picker-indicator:focus, 
+input[type=file]::-webkit-file-upload-button:focus, 
+button:focus, 
+textarea:focus, 
+input:focus, 
+select:focus, 
+option:focus, 
+details:focus, 
+summary:focus {
+    outline: none;
+}
+
 input:not([type="range"]),
 textarea {
     -webkit-appearance: none;

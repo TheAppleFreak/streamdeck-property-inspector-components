@@ -1,0 +1,27 @@
+@import "../common";
+
+button {
+    background-color: var(--sdpi-background);
+    border: 1pt solid var(--sdpi-buttonbordercolor);
+    border-radius: var(--sdpi-borderradius);
+    border-color: var(--sdpi-buttonbordercolor);
+    color: var(--sdpi-color);
+    height: 23px;
+    margin-right: 8px;
+    min-height: 23px;
+
+    &.value {
+        margin-left: 6px;
+        margin-right: 14px;
+    }
+
+    &:active {
+        background-color: var(--sdpi-color);
+        color: #303030;
+    }
+}
+
+.small-button {
+    flex-basis: 20%;
+    flex-grow: 0;
+}

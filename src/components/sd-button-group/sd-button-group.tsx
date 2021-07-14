@@ -1,18 +1,22 @@
-import { Component, Host, h } from "@stencil/core";
+import { Component, Host, h, Prop } from "@stencil/core";
 
 @Component({
-  tag: "sd-button-group",
-  styleUrl: "sd-button-group.scss",
-  shadow: true,
+    tag: "sd-button-group",
+    styleUrl: "sd-button-group.scss",
+    shadow: true,
 })
 export class SdButtonGroup {
+    /**
+     * The display label for the button group
+     */
+    @Prop({reflect: true}) label: string = "";
 
-  render() {
-    return (
-      <Host>
-        <slot name="left"></slot>
-        <slot name="right"></slot>
-      </Host>
-    );
-  }
+    render() {
+        return (
+            <Host>
+                <sd-label text={this.label}></sd-label>
+                <slot></slot>
+            </Host>
+        );
+    }
 }

@@ -20,6 +20,11 @@ export class SdInput {
      * Whether the input should be read only. Defaults to `false`
      */
     @Prop({reflect: true}) readonly: boolean = false;
+    
+    /**
+     * Whether the input should be disabled. Defaults to `false`
+     */
+    @Prop({reflect: true}) disabled: boolean = false;
 
     /**
      * The type for the input box. Defaults to `text`
@@ -74,16 +79,14 @@ export class SdInput {
     render() {
         return (
             <Host title={this.altText}>
-                <div class={{
-                    "label": true,
-                    "empty": !this.label.length
-                }}>{this.label}</div>
+                <sd-label text={this.label}></sd-label>
                 <input class="value" 
                     type={this.type}
                     value={this.value}
                     required={this.required} 
                     placeholder={this.placeholder} 
                     readonly={this.readonly}
+                    disabled={this.disabled}
                     pattern={this.pattern}
                     onChange={this.changeUpdateHandler} 
                     onInput={this.inputUpdateHandler}

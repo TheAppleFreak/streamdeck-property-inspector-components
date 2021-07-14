@@ -17,6 +17,11 @@ export class SdTextarea {
     @Prop({reflect: true}) readonly: boolean = false;
     
     /**
+     * Whether the textarea should be disabled. Defaults to `false`
+     */
+    @Prop({reflect: true}) disabled: boolean = false;
+    
+    /**
      * The name of the textarea
      */
     @Prop() name?: string;
@@ -74,11 +79,7 @@ export class SdTextarea {
     render() {
         return (
             <Host>
-                <div class={{
-                    "label": true,
-                    "empty": !this.label.length,
-                    "count-offset": !!this.maxlength
-                }}>{this.label}</div>
+                <sd-label text={this.label} count-offset={!!this.maxlength}></sd-label>
                 <div class="value">
                     <textarea 
                         id={this.generatedId}
@@ -87,6 +88,7 @@ export class SdTextarea {
                         minlength={this.minlength ? this.minlength : undefined} 
                         maxlength={this.maxlength ? this.maxlength : undefined} 
                         readonly={this.readonly}
+                        disabled={this.disabled}
                         onChange={this.changeUpdateHandler}
                         onInput={this.inputUpdateHandler}
                     >

@@ -24,7 +24,7 @@ export class SdLabel {
                     content: this.text.trim().length === 0 ? "" : undefined
                 }}
             >
-                {this.text.trim()}
+                {this.text.trim()}{this.text.trim().length !== 0 ? ":" : undefined}
             </Host>
         );
     }

@@ -34,10 +34,7 @@ export class SdCanvas {
     render() {
         return (
             <Host>
-                <div class={{
-                    "label": true, 
-                    "empty": !this.label.length
-                }}>{this.label}</div>
+                <sd-label text={this.label}></sd-label>
                 <canvas 
                     class="value" 
                     width={this.width} 

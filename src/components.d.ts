@@ -6,6 +6,46 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface SdButton {
+        /**
+          * Whether the button should be disabled
+         */
+        "disabled": boolean;
+        /**
+          * Whether the button should fill up all available space available to it
+         */
+        "fill": boolean;
+        /**
+          * Whether to include the label in the rendered HTML. Useful when used in a button group
+         */
+        "includeLabel": boolean;
+        /**
+          * The display label for the button
+         */
+        "label": string;
+        /**
+          * The name attribute for the button
+         */
+        "name": string;
+        /**
+          * Whether to include margin on the side of each button. Used in button groups
+         */
+        "sideMargin": boolean;
+        /**
+          * The name attribute for the button. Defaults to `button`
+         */
+        "type": "button" | "reset" | "submit";
+        /**
+          * The text to be displayed on the button
+         */
+        "value": string;
+    }
+    interface SdButtonGroup {
+        /**
+          * The display label for the button group
+         */
+        "label": string;
+    }
     interface SdCanvas {
         /**
           * Returns a reference to the canvas element
@@ -69,6 +109,10 @@ export namespace Components {
          */
         "altText": string;
         /**
+          * Whether the input should be disabled. Defaults to `false`
+         */
+        "disabled": boolean;
+        /**
           * The input mode to use for virtual keyboards
          */
         "inputmode"?: "none" | "text" | "decimal" | "numeric" | "tel" | "search" | "email" | "url";
@@ -101,9 +145,27 @@ export namespace Components {
          */
         "value": string;
     }
+    interface SdLabel {
+        /**
+          * Whether the textarea should have a -20px top margin. Used for alignment with other elements
+         */
+        "countOffset": boolean;
+        /**
+          * The text to show in the label
+         */
+        "text": string;
+    }
     interface SdRoot {
     }
+    interface SdSelect {
+    }
+    interface SdSelectOption {
+    }
     interface SdTextarea {
+        /**
+          * Whether the textarea should be disabled. Defaults to `false`
+         */
+        "disabled": boolean;
         /**
           * The display label for the textarea
          */
@@ -139,6 +201,18 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLSdButtonElement extends Components.SdButton, HTMLStencilElement {
+    }
+    var HTMLSdButtonElement: {
+        prototype: HTMLSdButtonElement;
+        new (): HTMLSdButtonElement;
+    };
+    interface HTMLSdButtonGroupElement extends Components.SdButtonGroup, HTMLStencilElement {
+    }
+    var HTMLSdButtonGroupElement: {
+        prototype: HTMLSdButtonGroupElement;
+        new (): HTMLSdButtonGroupElement;
+    };
     interface HTMLSdCanvasElement extends Components.SdCanvas, HTMLStencilElement {
     }
     var HTMLSdCanvasElement: {
@@ -163,11 +237,29 @@ declare global {
         prototype: HTMLSdInputElement;
         new (): HTMLSdInputElement;
     };
+    interface HTMLSdLabelElement extends Components.SdLabel, HTMLStencilElement {
+    }
+    var HTMLSdLabelElement: {
+        prototype: HTMLSdLabelElement;
+        new (): HTMLSdLabelElement;
+    };
     interface HTMLSdRootElement extends Components.SdRoot, HTMLStencilElement {
     }
     var HTMLSdRootElement: {
         prototype: HTMLSdRootElement;
         new (): HTMLSdRootElement;
+    };
+    interface HTMLSdSelectElement extends Components.SdSelect, HTMLStencilElement {
+    }
+    var HTMLSdSelectElement: {
+        prototype: HTMLSdSelectElement;
+        new (): HTMLSdSelectElement;
+    };
+    interface HTMLSdSelectOptionElement extends Components.SdSelectOption, HTMLStencilElement {
+    }
+    var HTMLSdSelectOptionElement: {
+        prototype: HTMLSdSelectOptionElement;
+        new (): HTMLSdSelectOptionElement;
     };
     interface HTMLSdTextareaElement extends Components.SdTextarea, HTMLStencilElement {
     }
@@ -176,15 +268,64 @@ declare global {
         new (): HTMLSdTextareaElement;
     };
     interface HTMLElementTagNameMap {
+        "sd-button": HTMLSdButtonElement;
+        "sd-button-group": HTMLSdButtonGroupElement;
         "sd-canvas": HTMLSdCanvasElement;
         "sd-details": HTMLSdDetailsElement;
         "sd-header": HTMLSdHeaderElement;
         "sd-input": HTMLSdInputElement;
+        "sd-label": HTMLSdLabelElement;
         "sd-root": HTMLSdRootElement;
+        "sd-select": HTMLSdSelectElement;
+        "sd-select-option": HTMLSdSelectOptionElement;
         "sd-textarea": HTMLSdTextareaElement;
     }
 }
 declare namespace LocalJSX {
+    interface SdButton {
+        /**
+          * Whether the button should be disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Whether the button should fill up all available space available to it
+         */
+        "fill"?: boolean;
+        /**
+          * Whether to include the label in the rendered HTML. Useful when used in a button group
+         */
+        "includeLabel"?: boolean;
+        /**
+          * The display label for the button
+         */
+        "label"?: string;
+        /**
+          * The name attribute for the button
+         */
+        "name"?: string;
+        /**
+          * Emits a `clicked` event whenever the button is clicked
+         */
+        "onClicked"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Whether to include margin on the side of each button. Used in button groups
+         */
+        "sideMargin"?: boolean;
+        /**
+          * The name attribute for the button. Defaults to `button`
+         */
+        "type"?: "button" | "reset" | "submit";
+        /**
+          * The text to be displayed on the button
+         */
+        "value"?: string;
+    }
+    interface SdButtonGroup {
+        /**
+          * The display label for the button group
+         */
+        "label"?: string;
+    }
     interface SdCanvas {
         /**
           * The height of the canvas. Defaults to `144`
@@ -233,6 +374,10 @@ declare namespace LocalJSX {
          */
         "altText"?: string;
         /**
+          * Whether the input should be disabled. Defaults to `false`
+         */
+        "disabled"?: boolean;
+        /**
           * The input mode to use for virtual keyboards
          */
         "inputmode"?: "none" | "text" | "decimal" | "numeric" | "tel" | "search" | "email" | "url";
@@ -273,9 +418,27 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface SdLabel {
+        /**
+          * Whether the textarea should have a -20px top margin. Used for alignment with other elements
+         */
+        "countOffset"?: boolean;
+        /**
+          * The text to show in the label
+         */
+        "text"?: string;
+    }
     interface SdRoot {
     }
+    interface SdSelect {
+    }
+    interface SdSelectOption {
+    }
     interface SdTextarea {
+        /**
+          * Whether the textarea should be disabled. Defaults to `false`
+         */
+        "disabled"?: boolean;
         /**
           * The display label for the textarea
          */
@@ -318,11 +481,16 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface IntrinsicElements {
+        "sd-button": SdButton;
+        "sd-button-group": SdButtonGroup;
         "sd-canvas": SdCanvas;
         "sd-details": SdDetails;
         "sd-header": SdHeader;
         "sd-input": SdInput;
+        "sd-label": SdLabel;
         "sd-root": SdRoot;
+        "sd-select": SdSelect;
+        "sd-select-option": SdSelectOption;
         "sd-textarea": SdTextarea;
     }
 }
@@ -330,11 +498,16 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "sd-button": LocalJSX.SdButton & JSXBase.HTMLAttributes<HTMLSdButtonElement>;
+            "sd-button-group": LocalJSX.SdButtonGroup & JSXBase.HTMLAttributes<HTMLSdButtonGroupElement>;
             "sd-canvas": LocalJSX.SdCanvas & JSXBase.HTMLAttributes<HTMLSdCanvasElement>;
             "sd-details": LocalJSX.SdDetails & JSXBase.HTMLAttributes<HTMLSdDetailsElement>;
             "sd-header": LocalJSX.SdHeader & JSXBase.HTMLAttributes<HTMLSdHeaderElement>;
             "sd-input": LocalJSX.SdInput & JSXBase.HTMLAttributes<HTMLSdInputElement>;
+            "sd-label": LocalJSX.SdLabel & JSXBase.HTMLAttributes<HTMLSdLabelElement>;
             "sd-root": LocalJSX.SdRoot & JSXBase.HTMLAttributes<HTMLSdRootElement>;
+            "sd-select": LocalJSX.SdSelect & JSXBase.HTMLAttributes<HTMLSdSelectElement>;
+            "sd-select-option": LocalJSX.SdSelectOption & JSXBase.HTMLAttributes<HTMLSdSelectOptionElement>;
             "sd-textarea": LocalJSX.SdTextarea & JSXBase.HTMLAttributes<HTMLSdTextareaElement>;
         }
     }
