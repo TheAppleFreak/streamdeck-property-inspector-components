@@ -6,11 +6,68 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface SdCanvas {
+        /**
+          * Returns a reference to the canvas element
+         */
+        "getCanvas": () => Promise<HTMLCanvasElement>;
+        /**
+          * The height of the canvas. Defaults to `144`
+         */
+        "height": number;
+        /**
+          * The display label for the canvas
+         */
+        "label": string;
+        /**
+          * The width of the canvas. Defaults to `144`
+         */
+        "width": number;
+    }
     interface SdDetails {
+        /**
+          * Closes the details element. Has no effect if the element is already closed
+          * @returns Returns the new state of the element (true = open, false = closed)
+         */
+        "close": () => Promise<boolean>;
+        /**
+          * Whether to include the label in the rendered HTML
+         */
+        "includeLabel": boolean;
+        /**
+          * Whether the text should have margins on the text elements
+         */
+        "innerMargins": boolean;
+        /**
+          * The display label for the details element
+         */
+        "label": string;
+        /**
+          * Opens the details element. Has no effect if the element is already open
+          * @returns Returns the new state of the element (true = open, false = closed)
+         */
+        "open": () => Promise<boolean>;
+        /**
+          * Whether the details element should initially be open (`true`) or closed (`false`). Defaults to `false`
+         */
+        "opened": boolean;
+        /**
+          * The summary message for the details element
+         */
+        "summary": string;
+        /**
+          * Toggles the open state of the details element, closing it if it is open and opening it if it is closed
+          * @returns Returns the new state of the element (true = open, false = closed)
+         */
+        "toggle": () => Promise<boolean>;
     }
     interface SdHeader {
     }
     interface SdInput {
+        /**
+          * The hover text for the form entry
+         */
+        "altText": string;
         /**
           * The input mode to use for virtual keyboards
          */
@@ -28,6 +85,10 @@ export namespace Components {
          */
         "placeholder"?: string;
         /**
+          * Whether the input should be read only. Defaults to `false`
+         */
+        "readonly": boolean;
+        /**
           * Whether or not the input is required. Defaults to `false`
          */
         "required"?: boolean;
@@ -36,9 +97,9 @@ export namespace Components {
          */
         "type"?: "email" | "number" | "password" | "search" | "tel" | "text" | "url";
         /**
-          * A predefined value for the input. Defaults to an empty string (` `)
+          * A predefined value for the input
          */
-        "value"?: string;
+        "value": string;
     }
     interface SdRoot {
     }
@@ -47,16 +108,43 @@ export namespace Components {
           * The display label for the textarea
          */
         "label": string;
-        "maxLength": number;
-        "minLength": number;
+        /**
+          * The maximum length of the content of the textarea
+         */
+        "maxlength": number;
+        /**
+          * The minimum length of the content of the textarea
+         */
+        "minlength": number;
+        /**
+          * The name of the textarea
+         */
         "name"?: string;
+        /**
+          * The placeholder value for the input field
+         */
         "placeholder"?: string;
+        /**
+          * Whether the textarea should be read only. Defaults to `false`
+         */
         "readonly": boolean;
+        /**
+          * Whether or not the textarea is required. Defaults to `false`
+         */
         "required": boolean;
-        "value"?: string;
+        /**
+          * A predefined value for the textarea
+         */
+        "value": string;
     }
 }
 declare global {
+    interface HTMLSdCanvasElement extends Components.SdCanvas, HTMLStencilElement {
+    }
+    var HTMLSdCanvasElement: {
+        prototype: HTMLSdCanvasElement;
+        new (): HTMLSdCanvasElement;
+    };
     interface HTMLSdDetailsElement extends Components.SdDetails, HTMLStencilElement {
     }
     var HTMLSdDetailsElement: {
@@ -88,6 +176,7 @@ declare global {
         new (): HTMLSdTextareaElement;
     };
     interface HTMLElementTagNameMap {
+        "sd-canvas": HTMLSdCanvasElement;
         "sd-details": HTMLSdDetailsElement;
         "sd-header": HTMLSdHeaderElement;
         "sd-input": HTMLSdInputElement;
@@ -96,11 +185,53 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface SdCanvas {
+        /**
+          * The height of the canvas. Defaults to `144`
+         */
+        "height"?: number;
+        /**
+          * The display label for the canvas
+         */
+        "label"?: string;
+        /**
+          * The width of the canvas. Defaults to `144`
+         */
+        "width"?: number;
+    }
     interface SdDetails {
+        /**
+          * Whether to include the label in the rendered HTML
+         */
+        "includeLabel"?: boolean;
+        /**
+          * Whether the text should have margins on the text elements
+         */
+        "innerMargins"?: boolean;
+        /**
+          * The display label for the details element
+         */
+        "label"?: string;
+        /**
+          * Emits an `openChanged` event whenever the details element is opened (true = open, false = closed)
+         */
+        "onOpenChanged"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Whether the details element should initially be open (`true`) or closed (`false`). Defaults to `false`
+         */
+        "opened"?: boolean;
+        /**
+          * The summary message for the details element
+         */
+        "summary"?: string;
     }
     interface SdHeader {
     }
     interface SdInput {
+        /**
+          * The hover text for the form entry
+         */
+        "altText"?: string;
         /**
           * The input mode to use for virtual keyboards
          */
@@ -109,7 +240,13 @@ declare namespace LocalJSX {
           * The display label for the input
          */
         "label"?: string;
+        /**
+          * Emits a `changeUpdate` event whenever the input is changed. Fires after the input loses focus
+         */
         "onChangeUpdate"?: (event: CustomEvent<string>) => void;
+        /**
+          * Emits a `inputUpdate` event whenever the input is changed. Fires every time something is typed into the input
+         */
         "onInputUpdate"?: (event: CustomEvent<{data: string | null, inputType: string}>) => void;
         /**
           * A validation regex for the input. Will show a checkmark next to the input when validated
@@ -120,6 +257,10 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
+          * Whether the input should be read only. Defaults to `false`
+         */
+        "readonly"?: boolean;
+        /**
           * Whether or not the input is required. Defaults to `false`
          */
         "required"?: boolean;
@@ -128,7 +269,7 @@ declare namespace LocalJSX {
          */
         "type"?: "email" | "number" | "password" | "search" | "tel" | "text" | "url";
         /**
-          * A predefined value for the input. Defaults to an empty string (` `)
+          * A predefined value for the input
          */
         "value"?: string;
     }
@@ -139,17 +280,45 @@ declare namespace LocalJSX {
           * The display label for the textarea
          */
         "label"?: string;
-        "maxLength"?: number;
-        "minLength"?: number;
+        /**
+          * The maximum length of the content of the textarea
+         */
+        "maxlength"?: number;
+        /**
+          * The minimum length of the content of the textarea
+         */
+        "minlength"?: number;
+        /**
+          * The name of the textarea
+         */
         "name"?: string;
+        /**
+          * Emits a `changeUpdate` event whenever the textarea is changed. Fires after the textarea loses focus
+         */
         "onChangeUpdate"?: (event: CustomEvent<string>) => void;
+        /**
+          * Emits a `inputUpdate` event whenever the textarea is changed. Fires every time something is typed into the textarea
+         */
         "onInputUpdate"?: (event: CustomEvent<{data: string | null, inputType: string}>) => void;
+        /**
+          * The placeholder value for the input field
+         */
         "placeholder"?: string;
+        /**
+          * Whether the textarea should be read only. Defaults to `false`
+         */
         "readonly"?: boolean;
+        /**
+          * Whether or not the textarea is required. Defaults to `false`
+         */
         "required"?: boolean;
+        /**
+          * A predefined value for the textarea
+         */
         "value"?: string;
     }
     interface IntrinsicElements {
+        "sd-canvas": SdCanvas;
         "sd-details": SdDetails;
         "sd-header": SdHeader;
         "sd-input": SdInput;
@@ -161,6 +330,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "sd-canvas": LocalJSX.SdCanvas & JSXBase.HTMLAttributes<HTMLSdCanvasElement>;
             "sd-details": LocalJSX.SdDetails & JSXBase.HTMLAttributes<HTMLSdDetailsElement>;
             "sd-header": LocalJSX.SdHeader & JSXBase.HTMLAttributes<HTMLSdHeaderElement>;
             "sd-input": LocalJSX.SdInput & JSXBase.HTMLAttributes<HTMLSdInputElement>;

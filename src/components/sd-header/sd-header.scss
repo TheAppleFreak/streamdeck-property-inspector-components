@@ -7,6 +7,8 @@
     color: inherit;
     font-size: 9pt;
     margin: 8px 0px;
+    min-height: 16px;
+    max-width: initial;
 
     &::before,
     &::after {

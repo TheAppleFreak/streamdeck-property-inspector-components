@@ -1,0 +1,15 @@
+@import "../common";
+
+details {
+    min-width: 86px;
+
+    * {
+        font-size: 12px;
+        font-weight: normal;
+    }
+}
+
+summary {
+    cursor: default;
+    user-select: none;
+}

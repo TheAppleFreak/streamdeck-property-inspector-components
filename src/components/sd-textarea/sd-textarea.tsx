@@ -1,39 +1,66 @@
-import { Component, Host, h, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, Host, h, Prop, Event, EventEmitter } from "@stencil/core";
 
 @Component({
-    tag: 'sd-textarea',
-    styleUrl: 'sd-textarea.scss',
+    tag: "sd-textarea",
+    styleUrl: "sd-textarea.scss",
     shadow: true,
 })
 export class SdTextarea {
     /**
      * The display label for the textarea
      */
-    @Prop() label: string = "";
+    @Prop({reflect: true}) label: string = "";
 
-    @Prop() readonly: boolean = false;
+    /**
+     * Whether the textarea should be read only. Defaults to `false`
+     */
+    @Prop({reflect: true}) readonly: boolean = false;
     
+    /**
+     * The name of the textarea
+     */
     @Prop() name?: string;
     
-    @Prop({reflect: true, mutable: true}) value?: string;
+    /**
+     * A predefined value for the textarea
+     */
+    @Prop({mutable: true}) value: string = "";
     
-    @Prop() placeholder?: string;
+    /**
+     * The placeholder value for the input field
+     */
+    @Prop({reflect: true}) placeholder?: string;
 
+    /**
+     * Whether or not the textarea is required. Defaults to `false`
+     */
     @Prop() required: boolean = false;
 
-    @Prop() minLength: number = 0;
+    /**
+     * The minimum length of the content of the textarea
+     */
+    @Prop({reflect: true}) minlength: number = 0;
     
-    @Prop() maxLength: number = 0;
+    /**
+     * The maximum length of the content of the textarea
+     */
+    @Prop({reflect: true}) maxlength: number = 0;
     
-    private charCount: number = 0;
+    private charCount: number = this.value.length;
 
     private generatedId: string = Math.random().toString(36).replace(/[^a-z]+/g, "").substr(0, 5);
     
+    /**
+     * Emits a `changeUpdate` event whenever the textarea is changed. Fires after the textarea loses focus
+     */
     @Event() changeUpdate: EventEmitter<string>;
     changeUpdateHandler = (ev: InputEvent) => {
         this.changeUpdate.emit((ev.target as HTMLTextAreaElement).value);
     }
-
+    
+    /**
+     * Emits a `inputUpdate` event whenever the textarea is changed. Fires every time something is typed into the textarea
+     */
     @Event() inputUpdate: EventEmitter<{data: string | null, inputType: string}>;
     inputUpdateHandler = (ev: InputEvent) => {
         this.value = (ev.target as HTMLTextAreaElement).value;
@@ -47,14 +74,18 @@ export class SdTextarea {
     render() {
         return (
             <Host>
-                <div class="label">{this.label}</div>
+                <div class={{
+                    "label": true,
+                    "empty": !this.label.length,
+                    "count-offset": !!this.maxlength
+                }}>{this.label}</div>
                 <div class="value">
                     <textarea 
                         id={this.generatedId}
                         name={this.name}
                         placeholder={this.placeholder}
-                        minlength={this.minLength > 0 ? this.minLength : undefined} 
-                        maxlength={this.maxLength > 0 ? this.maxLength : undefined} 
+                        minlength={this.minlength ? this.minlength : undefined} 
+                        maxlength={this.maxlength ? this.maxlength : undefined} 
                         readonly={this.readonly}
                         onChange={this.changeUpdateHandler}
                         onInput={this.inputUpdateHandler}
@@ -62,8 +93,8 @@ export class SdTextarea {
                         {this.value}
                     </textarea>
                     {
-                        this.maxLength > 0
-                        ? <label htmlFor={this.generatedId}>{this.charCount}/{this.maxLength}</label>
+                        this.maxlength
+                        ? <label htmlFor={this.generatedId}>{this.charCount}/{this.maxlength}</label>
                         : undefined
                     }
                 </div>
