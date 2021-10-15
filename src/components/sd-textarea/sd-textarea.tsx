@@ -58,22 +58,27 @@ export class SdTextarea {
     /**
      * Emits a `changeUpdate` event whenever the textarea is changed. Fires after the textarea loses focus
      */
-    @Event() changeUpdate: EventEmitter<string>;
+    // @Event() changeUpdate: EventEmitter<string>;
+    // changeUpdateHandler = (ev: InputEvent) => {
+    //     this.changeUpdate.emit((ev.target as HTMLTextAreaElement).value);
+    // }
+    @Event() changeUpdate: EventEmitter<InputEvent>;
     changeUpdateHandler = (ev: InputEvent) => {
-        this.changeUpdate.emit((ev.target as HTMLTextAreaElement).value);
+        this.changeUpdate.emit(ev);
     }
     
     /**
      * Emits a `inputUpdate` event whenever the textarea is changed. Fires every time something is typed into the textarea
      */
-    @Event() inputUpdate: EventEmitter<{data: string | null, inputType: string}>;
+    @Event() inputUpdate: EventEmitter<InputEvent>;
     inputUpdateHandler = (ev: InputEvent) => {
         this.value = (ev.target as HTMLTextAreaElement).value;
         this.charCount = this.value.length;
-        this.inputUpdate.emit({
-            data: ev.data,
-            inputType: ev.inputType
-        });
+        // this.inputUpdate.emit({
+        //     data: ev.data,
+        //     inputType: ev.inputType
+        // });
+        this.inputUpdate.emit(ev);
     }
 
     render() {

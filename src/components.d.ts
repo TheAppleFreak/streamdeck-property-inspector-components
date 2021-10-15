@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { OptGroup, Option } from "./components/sd-select/sd-select";
 export namespace Components {
     interface SdButton {
         /**
@@ -109,6 +110,63 @@ export namespace Components {
          */
         "altText": string;
         /**
+          * The autocomplete type for the select element. Values taken from here: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
+         */
+        "autocomplete": "off" |
+                                "on" |
+                                "name" |
+                                "honorific-prefix" |
+                                "given-name" |
+                                "additional-name" |
+                                "family-name" |
+                                "honorific-suffix" |
+                                "nickname" |
+                                "email" |
+                                "username" |
+                                "new-password" |
+                                "current-password" |
+                                "one-time-code" |
+                                "organization-title" |
+                                "organization" |
+                                "street-address" |
+                                "address-line1" |
+                                "address-line2" |
+                                "address-line3" |
+                                "address-level4" |
+                                "address-level3" |
+                                "address-level2" |
+                                "address-level1" |
+                                "country" |
+                                "country-name" |
+                                "postal-code" |
+                                "cc-name" |
+                                "cc-given-name" |
+                                "cc-additional-name" |
+                                "cc-family-name" | 
+                                "cc-number" | 
+                                "cc-exp" | 
+                                "cc-exp-month" | 
+                                "cc-exp-year" | 
+                                "cc-csc" | 
+                                "cc-type" |
+                                "transaction-currency" | 
+                                "transaction-amount" |
+                                "language" |
+                                "bday" |
+                                "bday-day" | 
+                                "bday-month" | 
+                                "bday-year" | 
+                                "sex" | 
+                                "tel" | 
+                                "tel-country-code" |
+                                "tel-national" | 
+                                "tel-area-code" | 
+                                "tel-local" |
+                                "tel-extension" | 
+                                "impp" | 
+                                "url" |
+                                "photo";
+        /**
           * Whether the input should be disabled. Defaults to `false`
          */
         "disabled": boolean;
@@ -158,8 +216,108 @@ export namespace Components {
     interface SdRoot {
     }
     interface SdSelect {
-    }
-    interface SdSelectOption {
+        /**
+          * The autocomplete type for the select element. Values taken from here: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
+         */
+        "autocomplete": "off" |
+                                "on" |
+                                "name" |
+                                "honorific-prefix" |
+                                "given-name" |
+                                "additional-name" |
+                                "family-name" |
+                                "honorific-suffix" |
+                                "nickname" |
+                                "email" |
+                                "username" |
+                                "new-password" |
+                                "current-password" |
+                                "one-time-code" |
+                                "organization-title" |
+                                "organization" |
+                                "street-address" |
+                                "address-line1" |
+                                "address-line2" |
+                                "address-line3" |
+                                "address-level4" |
+                                "address-level3" |
+                                "address-level2" |
+                                "address-level1" |
+                                "country" |
+                                "country-name" |
+                                "postal-code" |
+                                "cc-name" |
+                                "cc-given-name" |
+                                "cc-additional-name" |
+                                "cc-family-name" | 
+                                "cc-number" | 
+                                "cc-exp" | 
+                                "cc-exp-month" | 
+                                "cc-exp-year" | 
+                                "cc-csc" | 
+                                "cc-type" |
+                                "transaction-currency" | 
+                                "transaction-amount" |
+                                "language" |
+                                "bday" |
+                                "bday-day" | 
+                                "bday-month" | 
+                                "bday-year" | 
+                                "sex" | 
+                                "tel" | 
+                                "tel-country-code" |
+                                "tel-national" | 
+                                "tel-area-code" | 
+                                "tel-local" |
+                                "tel-extension" | 
+                                "impp" | 
+                                "url" |
+                                "photo";
+        /**
+          * Whether the select should be automatically focused on load
+         */
+        "autofocus": boolean;
+        /**
+          * Whether the select should be disabled
+         */
+        "disabled": boolean;
+        /**
+          * Whether the select should fill up all available space available to it
+         */
+        "fill": boolean;
+        /**
+          * Whether to include the label in the rendered HTML. Useful when used in a button group
+         */
+        "includeLabel": boolean;
+        /**
+          * The display label for the select element
+         */
+        "label": string;
+        /**
+          * Whether the select should allow for multiple selections
+         */
+        "multiple": boolean;
+        /**
+          * The name attribute for the select control
+         */
+        "name": string;
+        /**
+          * The select options. Can be set by passing in a JSON string or by setting the property through JavaScript.
+         */
+        "options": string |
+        Array<Option | OptGroup>;
+        /**
+          * Whether the select should be required
+         */
+        "required": boolean;
+        /**
+          * Whether to include margin on the side of each button. Used in button groups
+         */
+        "sideMargin": boolean;
+        /**
+          * The number of rows that should be visible at one time.
+         */
+        "size": number;
     }
     interface SdTextarea {
         /**
@@ -255,12 +413,6 @@ declare global {
         prototype: HTMLSdSelectElement;
         new (): HTMLSdSelectElement;
     };
-    interface HTMLSdSelectOptionElement extends Components.SdSelectOption, HTMLStencilElement {
-    }
-    var HTMLSdSelectOptionElement: {
-        prototype: HTMLSdSelectOptionElement;
-        new (): HTMLSdSelectOptionElement;
-    };
     interface HTMLSdTextareaElement extends Components.SdTextarea, HTMLStencilElement {
     }
     var HTMLSdTextareaElement: {
@@ -277,7 +429,6 @@ declare global {
         "sd-label": HTMLSdLabelElement;
         "sd-root": HTMLSdRootElement;
         "sd-select": HTMLSdSelectElement;
-        "sd-select-option": HTMLSdSelectOptionElement;
         "sd-textarea": HTMLSdTextareaElement;
     }
 }
@@ -306,7 +457,7 @@ declare namespace LocalJSX {
         /**
           * Emits a `clicked` event whenever the button is clicked
          */
-        "onClicked"?: (event: CustomEvent<boolean>) => void;
+        "onClicked"?: (event: CustomEvent<MouseEvent>) => void;
         /**
           * Whether to include margin on the side of each button. Used in button groups
          */
@@ -374,6 +525,63 @@ declare namespace LocalJSX {
          */
         "altText"?: string;
         /**
+          * The autocomplete type for the select element. Values taken from here: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
+         */
+        "autocomplete"?: "off" |
+                                "on" |
+                                "name" |
+                                "honorific-prefix" |
+                                "given-name" |
+                                "additional-name" |
+                                "family-name" |
+                                "honorific-suffix" |
+                                "nickname" |
+                                "email" |
+                                "username" |
+                                "new-password" |
+                                "current-password" |
+                                "one-time-code" |
+                                "organization-title" |
+                                "organization" |
+                                "street-address" |
+                                "address-line1" |
+                                "address-line2" |
+                                "address-line3" |
+                                "address-level4" |
+                                "address-level3" |
+                                "address-level2" |
+                                "address-level1" |
+                                "country" |
+                                "country-name" |
+                                "postal-code" |
+                                "cc-name" |
+                                "cc-given-name" |
+                                "cc-additional-name" |
+                                "cc-family-name" | 
+                                "cc-number" | 
+                                "cc-exp" | 
+                                "cc-exp-month" | 
+                                "cc-exp-year" | 
+                                "cc-csc" | 
+                                "cc-type" |
+                                "transaction-currency" | 
+                                "transaction-amount" |
+                                "language" |
+                                "bday" |
+                                "bday-day" | 
+                                "bday-month" | 
+                                "bday-year" | 
+                                "sex" | 
+                                "tel" | 
+                                "tel-country-code" |
+                                "tel-national" | 
+                                "tel-area-code" | 
+                                "tel-local" |
+                                "tel-extension" | 
+                                "impp" | 
+                                "url" |
+                                "photo";
+        /**
           * Whether the input should be disabled. Defaults to `false`
          */
         "disabled"?: boolean;
@@ -431,8 +639,116 @@ declare namespace LocalJSX {
     interface SdRoot {
     }
     interface SdSelect {
-    }
-    interface SdSelectOption {
+        /**
+          * The autocomplete type for the select element. Values taken from here: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
+         */
+        "autocomplete"?: "off" |
+                                "on" |
+                                "name" |
+                                "honorific-prefix" |
+                                "given-name" |
+                                "additional-name" |
+                                "family-name" |
+                                "honorific-suffix" |
+                                "nickname" |
+                                "email" |
+                                "username" |
+                                "new-password" |
+                                "current-password" |
+                                "one-time-code" |
+                                "organization-title" |
+                                "organization" |
+                                "street-address" |
+                                "address-line1" |
+                                "address-line2" |
+                                "address-line3" |
+                                "address-level4" |
+                                "address-level3" |
+                                "address-level2" |
+                                "address-level1" |
+                                "country" |
+                                "country-name" |
+                                "postal-code" |
+                                "cc-name" |
+                                "cc-given-name" |
+                                "cc-additional-name" |
+                                "cc-family-name" | 
+                                "cc-number" | 
+                                "cc-exp" | 
+                                "cc-exp-month" | 
+                                "cc-exp-year" | 
+                                "cc-csc" | 
+                                "cc-type" |
+                                "transaction-currency" | 
+                                "transaction-amount" |
+                                "language" |
+                                "bday" |
+                                "bday-day" | 
+                                "bday-month" | 
+                                "bday-year" | 
+                                "sex" | 
+                                "tel" | 
+                                "tel-country-code" |
+                                "tel-national" | 
+                                "tel-area-code" | 
+                                "tel-local" |
+                                "tel-extension" | 
+                                "impp" | 
+                                "url" |
+                                "photo";
+        /**
+          * Whether the select should be automatically focused on load
+         */
+        "autofocus"?: boolean;
+        /**
+          * Whether the select should be disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Whether the select should fill up all available space available to it
+         */
+        "fill"?: boolean;
+        /**
+          * Whether to include the label in the rendered HTML. Useful when used in a button group
+         */
+        "includeLabel"?: boolean;
+        /**
+          * The display label for the select element
+         */
+        "label"?: string;
+        /**
+          * Whether the select should allow for multiple selections
+         */
+        "multiple"?: boolean;
+        /**
+          * The name attribute for the select control
+         */
+        "name"?: string;
+        /**
+          * Emits a `changed` event whenever the value of the select is explicitly changed and committed by the user
+         */
+        "onChangeUpdate"?: (event: CustomEvent<InputEvent>) => void;
+        /**
+          * Emits an `input` event whenever the value of the select is changed by the user
+         */
+        "onInputUpdate"?: (event: CustomEvent<InputEvent>) => void;
+        /**
+          * The select options. Can be set by passing in a JSON string or by setting the property through JavaScript.
+         */
+        "options"?: string |
+        Array<Option | OptGroup>;
+        /**
+          * Whether the select should be required
+         */
+        "required"?: boolean;
+        /**
+          * Whether to include margin on the side of each button. Used in button groups
+         */
+        "sideMargin"?: boolean;
+        /**
+          * The number of rows that should be visible at one time.
+         */
+        "size"?: number;
     }
     interface SdTextarea {
         /**
@@ -458,11 +774,11 @@ declare namespace LocalJSX {
         /**
           * Emits a `changeUpdate` event whenever the textarea is changed. Fires after the textarea loses focus
          */
-        "onChangeUpdate"?: (event: CustomEvent<string>) => void;
+        "onChangeUpdate"?: (event: CustomEvent<InputEvent>) => void;
         /**
           * Emits a `inputUpdate` event whenever the textarea is changed. Fires every time something is typed into the textarea
          */
-        "onInputUpdate"?: (event: CustomEvent<{data: string | null, inputType: string}>) => void;
+        "onInputUpdate"?: (event: CustomEvent<InputEvent>) => void;
         /**
           * The placeholder value for the input field
          */
@@ -490,7 +806,6 @@ declare namespace LocalJSX {
         "sd-label": SdLabel;
         "sd-root": SdRoot;
         "sd-select": SdSelect;
-        "sd-select-option": SdSelectOption;
         "sd-textarea": SdTextarea;
     }
 }
@@ -507,7 +822,6 @@ declare module "@stencil/core" {
             "sd-label": LocalJSX.SdLabel & JSXBase.HTMLAttributes<HTMLSdLabelElement>;
             "sd-root": LocalJSX.SdRoot & JSXBase.HTMLAttributes<HTMLSdRootElement>;
             "sd-select": LocalJSX.SdSelect & JSXBase.HTMLAttributes<HTMLSdSelectElement>;
-            "sd-select-option": LocalJSX.SdSelectOption & JSXBase.HTMLAttributes<HTMLSdSelectOptionElement>;
             "sd-textarea": LocalJSX.SdTextarea & JSXBase.HTMLAttributes<HTMLSdTextareaElement>;
         }
     }

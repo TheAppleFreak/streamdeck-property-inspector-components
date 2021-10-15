@@ -44,15 +44,15 @@ export class SdButton {
     /**
      * Whether to include margin on the side of each button. Used in button groups
      */
-    @Prop({ reflect: true }) sideMargin: boolean = true
+    @Prop({ reflect: true }) sideMargin: boolean = true;
 
     /**
      * Emits a `clicked` event whenever the button is clicked
      */
-     @Event() clicked: EventEmitter<boolean>;
-     clickHandler = (_ev: any) => {
-         this.clicked.emit();
-     }
+    @Event() clicked: EventEmitter<MouseEvent>;
+    clickHandler = (ev: MouseEvent) => {
+        this.clicked.emit(ev);
+    }
 
     render() {
         return (
@@ -64,7 +64,6 @@ export class SdButton {
                 }
                 <button 
                     class={{
-                        // "value": this.includeLabel,
                         "value": true,
                         "small-button": !this.fill,
                         "no-side-margin": !this.sideMargin
