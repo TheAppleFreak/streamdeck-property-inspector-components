@@ -1,11 +1,11 @@
 import { Component, Host, h, Prop } from "@stencil/core";
 
 @Component({
-    tag: "sd-group",
-    styleUrl: "sd-group.scss",
+    tag: "sd-checkbox-group",
+    styleUrl: "sd-checkbox-group.scss",
     shadow: true,
 })
-export class SdGroup {
+export class SdCheckboxGroup {
     /**
      * The display label for the button group
      */

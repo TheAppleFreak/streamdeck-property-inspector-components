@@ -82,6 +82,12 @@ export namespace Components {
          */
         "value": string;
     }
+    interface SdCheckboxGroup {
+        /**
+          * The display label for the button group
+         */
+        "label": string;
+    }
     interface SdDetails {
         /**
           * Closes the details element. Has no effect if the element is already closed
@@ -235,6 +241,10 @@ export namespace Components {
           * The text to show in the label
          */
         "text": string;
+    }
+    interface SdRadioButton {
+    }
+    interface SdRadioGroup {
     }
     interface SdRoot {
     }
@@ -424,6 +434,12 @@ declare global {
         prototype: HTMLSdCheckboxElement;
         new (): HTMLSdCheckboxElement;
     };
+    interface HTMLSdCheckboxGroupElement extends Components.SdCheckboxGroup, HTMLStencilElement {
+    }
+    var HTMLSdCheckboxGroupElement: {
+        prototype: HTMLSdCheckboxGroupElement;
+        new (): HTMLSdCheckboxGroupElement;
+    };
     interface HTMLSdDetailsElement extends Components.SdDetails, HTMLStencilElement {
     }
     var HTMLSdDetailsElement: {
@@ -454,6 +470,18 @@ declare global {
         prototype: HTMLSdLabelElement;
         new (): HTMLSdLabelElement;
     };
+    interface HTMLSdRadioButtonElement extends Components.SdRadioButton, HTMLStencilElement {
+    }
+    var HTMLSdRadioButtonElement: {
+        prototype: HTMLSdRadioButtonElement;
+        new (): HTMLSdRadioButtonElement;
+    };
+    interface HTMLSdRadioGroupElement extends Components.SdRadioGroup, HTMLStencilElement {
+    }
+    var HTMLSdRadioGroupElement: {
+        prototype: HTMLSdRadioGroupElement;
+        new (): HTMLSdRadioGroupElement;
+    };
     interface HTMLSdRootElement extends Components.SdRoot, HTMLStencilElement {
     }
     var HTMLSdRootElement: {
@@ -476,11 +504,14 @@ declare global {
         "sd-button": HTMLSdButtonElement;
         "sd-canvas": HTMLSdCanvasElement;
         "sd-checkbox": HTMLSdCheckboxElement;
+        "sd-checkbox-group": HTMLSdCheckboxGroupElement;
         "sd-details": HTMLSdDetailsElement;
         "sd-group": HTMLSdGroupElement;
         "sd-header": HTMLSdHeaderElement;
         "sd-input": HTMLSdInputElement;
         "sd-label": HTMLSdLabelElement;
+        "sd-radio-button": HTMLSdRadioButtonElement;
+        "sd-radio-group": HTMLSdRadioGroupElement;
         "sd-root": HTMLSdRootElement;
         "sd-select": HTMLSdSelectElement;
         "sd-textarea": HTMLSdTextareaElement;
@@ -572,6 +603,12 @@ declare namespace LocalJSX {
           * The value
          */
         "value"?: string;
+    }
+    interface SdCheckboxGroup {
+        /**
+          * The display label for the button group
+         */
+        "label"?: string;
     }
     interface SdDetails {
         /**
@@ -723,6 +760,10 @@ declare namespace LocalJSX {
           * The text to show in the label
          */
         "text"?: string;
+    }
+    interface SdRadioButton {
+    }
+    interface SdRadioGroup {
     }
     interface SdRoot {
     }
@@ -888,11 +929,14 @@ declare namespace LocalJSX {
         "sd-button": SdButton;
         "sd-canvas": SdCanvas;
         "sd-checkbox": SdCheckbox;
+        "sd-checkbox-group": SdCheckboxGroup;
         "sd-details": SdDetails;
         "sd-group": SdGroup;
         "sd-header": SdHeader;
         "sd-input": SdInput;
         "sd-label": SdLabel;
+        "sd-radio-button": SdRadioButton;
+        "sd-radio-group": SdRadioGroup;
         "sd-root": SdRoot;
         "sd-select": SdSelect;
         "sd-textarea": SdTextarea;
@@ -905,11 +949,14 @@ declare module "@stencil/core" {
             "sd-button": LocalJSX.SdButton & JSXBase.HTMLAttributes<HTMLSdButtonElement>;
             "sd-canvas": LocalJSX.SdCanvas & JSXBase.HTMLAttributes<HTMLSdCanvasElement>;
             "sd-checkbox": LocalJSX.SdCheckbox & JSXBase.HTMLAttributes<HTMLSdCheckboxElement>;
+            "sd-checkbox-group": LocalJSX.SdCheckboxGroup & JSXBase.HTMLAttributes<HTMLSdCheckboxGroupElement>;
             "sd-details": LocalJSX.SdDetails & JSXBase.HTMLAttributes<HTMLSdDetailsElement>;
             "sd-group": LocalJSX.SdGroup & JSXBase.HTMLAttributes<HTMLSdGroupElement>;
             "sd-header": LocalJSX.SdHeader & JSXBase.HTMLAttributes<HTMLSdHeaderElement>;
             "sd-input": LocalJSX.SdInput & JSXBase.HTMLAttributes<HTMLSdInputElement>;
             "sd-label": LocalJSX.SdLabel & JSXBase.HTMLAttributes<HTMLSdLabelElement>;
+            "sd-radio-button": LocalJSX.SdRadioButton & JSXBase.HTMLAttributes<HTMLSdRadioButtonElement>;
+            "sd-radio-group": LocalJSX.SdRadioGroup & JSXBase.HTMLAttributes<HTMLSdRadioGroupElement>;
             "sd-root": LocalJSX.SdRoot & JSXBase.HTMLAttributes<HTMLSdRootElement>;
             "sd-select": LocalJSX.SdSelect & JSXBase.HTMLAttributes<HTMLSdSelectElement>;
             "sd-textarea": LocalJSX.SdTextarea & JSXBase.HTMLAttributes<HTMLSdTextareaElement>;

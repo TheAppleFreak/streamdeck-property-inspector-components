@@ -113,7 +113,7 @@ export class SdSelect {
      */
     @Prop({ reflect: true }) options:
         string |
-        Array<Option | OptGroup>;
+        Array<Option | OptGroup> = [];
 
     @Watch("options")
     parseOptions() {
@@ -195,9 +195,6 @@ export class SdSelect {
                 }
                 <select
                     id={this.generatedId}
-                    class={{
-
-                    }}
                     onChange={this.changeUpdateHandler}
                     onInput={this.inputUpdateHandler}
                     name={this.name}
