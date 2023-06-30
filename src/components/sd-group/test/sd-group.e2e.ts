@@ -1,11 +1,11 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('sd-button-group', () => {
+describe('sd-group', () => {
   it('renders', async () => {
     const page = await newE2EPage();
-    await page.setContent('<sd-button-group></sd-button-group>');
+    await page.setContent('<sd-group></sd-group>');
 
-    const element = await page.find('sd-button-group');
+    const element = await page.find('sd-group');
     expect(element).toHaveClass('hydrated');
   });
 });

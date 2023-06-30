@@ -35,3 +35,8 @@ textarea {
 .label.count-offset {
     margin-top: -20px;
 }
+
+.value {
+    // A rule in common.scss is being a bit too specific with this one
+    padding: 0 !important;
+}

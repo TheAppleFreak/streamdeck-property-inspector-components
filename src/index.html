@@ -45,13 +45,20 @@
             <sd-header>BUTTONS</sd-header>
             <sd-button label="Button" value="Click Me"></sd-button>
             <sd-button label="Button" value="Click Me max20" fill=false>Click Me</sd-button>
-            <sd-button-group label="2 Buttons">
+            <sd-group label="2 Buttons">
                 <sd-button include-label=false value="Click Me"></sd-button>
                 <sd-button include-label=false value="Or Me"></sd-button>
-            </sd-button-group>
+            </sd-group>
 
             <sd-header>SELECTS</sd-header>
             <sd-select label="Select" options='[{"type":"optgroup","label":"Women","options":[{"type":"option","value":"janedoe@example.com","text":"Jane Doe"},{"type":"option","value":"tinatank@example.com","text":"Some Girl"},{"type":"option","value":"yoko@example.com","text":"Yoko Hama"}]},{"type":"optgroup","label":"Men","options":[{"type":"option","value":"johndoe@example.com","text":"John Doe"},{"type":"option","value":"triptronic@example.com","text":"Some Man"},{"type":"option","value":"kingofprawns@example.com","text":"Another Chap"}]}]'></sd-select>
+            <sd-group label="Combo">
+                <sd-select include-label=false options='[{"type":"option", "value":"janedoe@example.com","text":"Jane Doe"},{"type":"option", "value":"someguy@example.com","text":"Some Guy"}]'></sd-select>
+                <sd-button include-label=false value="Click Me"></sd-button>
+            </sd-group>
+
+            <sd-header>CHECKBOXES &amp; RADIO</sd-header>
+            <sd-checkbox label="Light" checked=true value="on"></sd-checkbox>
         </sd-root>
         <div class="sdpi-wrapper">
 

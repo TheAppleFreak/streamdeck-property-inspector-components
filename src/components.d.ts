@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { OptGroup, Option } from "./components/sd-select/sd-select";
+export { OptGroup, Option } from "./components/sd-select/sd-select";
 export namespace Components {
     interface SdButton {
         /**
@@ -41,12 +42,6 @@ export namespace Components {
          */
         "value": string;
     }
-    interface SdButtonGroup {
-        /**
-          * The display label for the button group
-         */
-        "label": string;
-    }
     interface SdCanvas {
         /**
           * Returns a reference to the canvas element
@@ -64,6 +59,28 @@ export namespace Components {
           * The width of the canvas. Defaults to `144`
          */
         "width": number;
+    }
+    interface SdCheckbox {
+        /**
+          * Whether the checkbox is checked
+         */
+        "checked": boolean;
+        /**
+          * Whether to include the label in the rendered HTML. Useful when used in a group
+         */
+        "includeLabel": boolean;
+        /**
+          * Whether the checkbox is in an indeterminate state
+         */
+        "indeterminate": boolean;
+        /**
+          * The display label for the checkbox
+         */
+        "label": string;
+        /**
+          * The value
+         */
+        "value": string;
     }
     interface SdDetails {
         /**
@@ -102,6 +119,12 @@ export namespace Components {
          */
         "toggle": () => Promise<boolean>;
     }
+    interface SdGroup {
+        /**
+          * The display label for the button group
+         */
+        "label": string;
+    }
     interface SdHeader {
     }
     interface SdInput {
@@ -113,59 +136,59 @@ export namespace Components {
           * The autocomplete type for the select element. Values taken from here: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
          */
         "autocomplete": "off" |
-                                "on" |
-                                "name" |
-                                "honorific-prefix" |
-                                "given-name" |
-                                "additional-name" |
-                                "family-name" |
-                                "honorific-suffix" |
-                                "nickname" |
-                                "email" |
-                                "username" |
-                                "new-password" |
-                                "current-password" |
-                                "one-time-code" |
-                                "organization-title" |
-                                "organization" |
-                                "street-address" |
-                                "address-line1" |
-                                "address-line2" |
-                                "address-line3" |
-                                "address-level4" |
-                                "address-level3" |
-                                "address-level2" |
-                                "address-level1" |
-                                "country" |
-                                "country-name" |
-                                "postal-code" |
-                                "cc-name" |
-                                "cc-given-name" |
-                                "cc-additional-name" |
-                                "cc-family-name" | 
-                                "cc-number" | 
-                                "cc-exp" | 
-                                "cc-exp-month" | 
-                                "cc-exp-year" | 
-                                "cc-csc" | 
-                                "cc-type" |
-                                "transaction-currency" | 
-                                "transaction-amount" |
-                                "language" |
-                                "bday" |
-                                "bday-day" | 
-                                "bday-month" | 
-                                "bday-year" | 
-                                "sex" | 
-                                "tel" | 
-                                "tel-country-code" |
-                                "tel-national" | 
-                                "tel-area-code" | 
-                                "tel-local" |
-                                "tel-extension" | 
-                                "impp" | 
-                                "url" |
-                                "photo";
+        "on" |
+        "name" |
+        "honorific-prefix" |
+        "given-name" |
+        "additional-name" |
+        "family-name" |
+        "honorific-suffix" |
+        "nickname" |
+        "email" |
+        "username" |
+        "new-password" |
+        "current-password" |
+        "one-time-code" |
+        "organization-title" |
+        "organization" |
+        "street-address" |
+        "address-line1" |
+        "address-line2" |
+        "address-line3" |
+        "address-level4" |
+        "address-level3" |
+        "address-level2" |
+        "address-level1" |
+        "country" |
+        "country-name" |
+        "postal-code" |
+        "cc-name" |
+        "cc-given-name" |
+        "cc-additional-name" |
+        "cc-family-name" |
+        "cc-number" |
+        "cc-exp" |
+        "cc-exp-month" |
+        "cc-exp-year" |
+        "cc-csc" |
+        "cc-type" |
+        "transaction-currency" |
+        "transaction-amount" |
+        "language" |
+        "bday" |
+        "bday-day" |
+        "bday-month" |
+        "bday-year" |
+        "sex" |
+        "tel" |
+        "tel-country-code" |
+        "tel-national" |
+        "tel-area-code" |
+        "tel-local" |
+        "tel-extension" |
+        "impp" |
+        "url" |
+        "photo";
         /**
           * Whether the input should be disabled. Defaults to `false`
          */
@@ -220,59 +243,59 @@ export namespace Components {
           * The autocomplete type for the select element. Values taken from here: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
          */
         "autocomplete": "off" |
-                                "on" |
-                                "name" |
-                                "honorific-prefix" |
-                                "given-name" |
-                                "additional-name" |
-                                "family-name" |
-                                "honorific-suffix" |
-                                "nickname" |
-                                "email" |
-                                "username" |
-                                "new-password" |
-                                "current-password" |
-                                "one-time-code" |
-                                "organization-title" |
-                                "organization" |
-                                "street-address" |
-                                "address-line1" |
-                                "address-line2" |
-                                "address-line3" |
-                                "address-level4" |
-                                "address-level3" |
-                                "address-level2" |
-                                "address-level1" |
-                                "country" |
-                                "country-name" |
-                                "postal-code" |
-                                "cc-name" |
-                                "cc-given-name" |
-                                "cc-additional-name" |
-                                "cc-family-name" | 
-                                "cc-number" | 
-                                "cc-exp" | 
-                                "cc-exp-month" | 
-                                "cc-exp-year" | 
-                                "cc-csc" | 
-                                "cc-type" |
-                                "transaction-currency" | 
-                                "transaction-amount" |
-                                "language" |
-                                "bday" |
-                                "bday-day" | 
-                                "bday-month" | 
-                                "bday-year" | 
-                                "sex" | 
-                                "tel" | 
-                                "tel-country-code" |
-                                "tel-national" | 
-                                "tel-area-code" | 
-                                "tel-local" |
-                                "tel-extension" | 
-                                "impp" | 
-                                "url" |
-                                "photo";
+        "on" |
+        "name" |
+        "honorific-prefix" |
+        "given-name" |
+        "additional-name" |
+        "family-name" |
+        "honorific-suffix" |
+        "nickname" |
+        "email" |
+        "username" |
+        "new-password" |
+        "current-password" |
+        "one-time-code" |
+        "organization-title" |
+        "organization" |
+        "street-address" |
+        "address-line1" |
+        "address-line2" |
+        "address-line3" |
+        "address-level4" |
+        "address-level3" |
+        "address-level2" |
+        "address-level1" |
+        "country" |
+        "country-name" |
+        "postal-code" |
+        "cc-name" |
+        "cc-given-name" |
+        "cc-additional-name" |
+        "cc-family-name" |
+        "cc-number" |
+        "cc-exp" |
+        "cc-exp-month" |
+        "cc-exp-year" |
+        "cc-csc" |
+        "cc-type" |
+        "transaction-currency" |
+        "transaction-amount" |
+        "language" |
+        "bday" |
+        "bday-day" |
+        "bday-month" |
+        "bday-year" |
+        "sex" |
+        "tel" |
+        "tel-country-code" |
+        "tel-national" |
+        "tel-area-code" |
+        "tel-local" |
+        "tel-extension" |
+        "impp" |
+        "url" |
+        "photo";
         /**
           * Whether the select should be automatically focused on load
          */
@@ -358,6 +381,30 @@ export namespace Components {
         "value": string;
     }
 }
+export interface SdButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSdButtonElement;
+}
+export interface SdCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSdCheckboxElement;
+}
+export interface SdDetailsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSdDetailsElement;
+}
+export interface SdInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSdInputElement;
+}
+export interface SdSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSdSelectElement;
+}
+export interface SdTextareaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSdTextareaElement;
+}
 declare global {
     interface HTMLSdButtonElement extends Components.SdButton, HTMLStencilElement {
     }
@@ -365,23 +412,29 @@ declare global {
         prototype: HTMLSdButtonElement;
         new (): HTMLSdButtonElement;
     };
-    interface HTMLSdButtonGroupElement extends Components.SdButtonGroup, HTMLStencilElement {
-    }
-    var HTMLSdButtonGroupElement: {
-        prototype: HTMLSdButtonGroupElement;
-        new (): HTMLSdButtonGroupElement;
-    };
     interface HTMLSdCanvasElement extends Components.SdCanvas, HTMLStencilElement {
     }
     var HTMLSdCanvasElement: {
         prototype: HTMLSdCanvasElement;
         new (): HTMLSdCanvasElement;
     };
+    interface HTMLSdCheckboxElement extends Components.SdCheckbox, HTMLStencilElement {
+    }
+    var HTMLSdCheckboxElement: {
+        prototype: HTMLSdCheckboxElement;
+        new (): HTMLSdCheckboxElement;
+    };
     interface HTMLSdDetailsElement extends Components.SdDetails, HTMLStencilElement {
     }
     var HTMLSdDetailsElement: {
         prototype: HTMLSdDetailsElement;
         new (): HTMLSdDetailsElement;
+    };
+    interface HTMLSdGroupElement extends Components.SdGroup, HTMLStencilElement {
+    }
+    var HTMLSdGroupElement: {
+        prototype: HTMLSdGroupElement;
+        new (): HTMLSdGroupElement;
     };
     interface HTMLSdHeaderElement extends Components.SdHeader, HTMLStencilElement {
     }
@@ -421,9 +474,10 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "sd-button": HTMLSdButtonElement;
-        "sd-button-group": HTMLSdButtonGroupElement;
         "sd-canvas": HTMLSdCanvasElement;
+        "sd-checkbox": HTMLSdCheckboxElement;
         "sd-details": HTMLSdDetailsElement;
+        "sd-group": HTMLSdGroupElement;
         "sd-header": HTMLSdHeaderElement;
         "sd-input": HTMLSdInputElement;
         "sd-label": HTMLSdLabelElement;
@@ -457,7 +511,7 @@ declare namespace LocalJSX {
         /**
           * Emits a `clicked` event whenever the button is clicked
          */
-        "onClicked"?: (event: CustomEvent<MouseEvent>) => void;
+        "onClicked"?: (event: SdButtonCustomEvent<MouseEvent>) => void;
         /**
           * Whether to include margin on the side of each button. Used in button groups
          */
@@ -470,12 +524,6 @@ declare namespace LocalJSX {
           * The text to be displayed on the button
          */
         "value"?: string;
-    }
-    interface SdButtonGroup {
-        /**
-          * The display label for the button group
-         */
-        "label"?: string;
     }
     interface SdCanvas {
         /**
@@ -490,6 +538,40 @@ declare namespace LocalJSX {
           * The width of the canvas. Defaults to `144`
          */
         "width"?: number;
+    }
+    interface SdCheckbox {
+        /**
+          * Whether the checkbox is checked
+         */
+        "checked"?: boolean;
+        /**
+          * Whether to include the label in the rendered HTML. Useful when used in a group
+         */
+        "includeLabel"?: boolean;
+        /**
+          * Whether the checkbox is in an indeterminate state
+         */
+        "indeterminate"?: boolean;
+        /**
+          * The display label for the checkbox
+         */
+        "label"?: string;
+        /**
+          * Emits a `changeUpdate` event whenever the checkbox is changed.  Fires after the checkbox loses focus
+         */
+        "onChangeUpdate"?: (event: SdCheckboxCustomEvent<InputEvent>) => void;
+        /**
+          * Emits a `clickUpdate` event whenever the checkbox is clicked.
+         */
+        "onClickUpdate"?: (event: SdCheckboxCustomEvent<MouseEvent>) => void;
+        /**
+          * Emits a `inputUpdate` event whenever the checkbox is changed.  Fires every time the checkbox is checked or unchecked
+         */
+        "onInputUpdate"?: (event: SdCheckboxCustomEvent<InputEvent>) => void;
+        /**
+          * The value
+         */
+        "value"?: string;
     }
     interface SdDetails {
         /**
@@ -507,7 +589,7 @@ declare namespace LocalJSX {
         /**
           * Emits an `openChanged` event whenever the details element is opened (true = open, false = closed)
          */
-        "onOpenChanged"?: (event: CustomEvent<boolean>) => void;
+        "onOpenChanged"?: (event: SdDetailsCustomEvent<boolean>) => void;
         /**
           * Whether the details element should initially be open (`true`) or closed (`false`). Defaults to `false`
          */
@@ -516,6 +598,12 @@ declare namespace LocalJSX {
           * The summary message for the details element
          */
         "summary"?: string;
+    }
+    interface SdGroup {
+        /**
+          * The display label for the button group
+         */
+        "label"?: string;
     }
     interface SdHeader {
     }
@@ -528,59 +616,59 @@ declare namespace LocalJSX {
           * The autocomplete type for the select element. Values taken from here: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
          */
         "autocomplete"?: "off" |
-                                "on" |
-                                "name" |
-                                "honorific-prefix" |
-                                "given-name" |
-                                "additional-name" |
-                                "family-name" |
-                                "honorific-suffix" |
-                                "nickname" |
-                                "email" |
-                                "username" |
-                                "new-password" |
-                                "current-password" |
-                                "one-time-code" |
-                                "organization-title" |
-                                "organization" |
-                                "street-address" |
-                                "address-line1" |
-                                "address-line2" |
-                                "address-line3" |
-                                "address-level4" |
-                                "address-level3" |
-                                "address-level2" |
-                                "address-level1" |
-                                "country" |
-                                "country-name" |
-                                "postal-code" |
-                                "cc-name" |
-                                "cc-given-name" |
-                                "cc-additional-name" |
-                                "cc-family-name" | 
-                                "cc-number" | 
-                                "cc-exp" | 
-                                "cc-exp-month" | 
-                                "cc-exp-year" | 
-                                "cc-csc" | 
-                                "cc-type" |
-                                "transaction-currency" | 
-                                "transaction-amount" |
-                                "language" |
-                                "bday" |
-                                "bday-day" | 
-                                "bday-month" | 
-                                "bday-year" | 
-                                "sex" | 
-                                "tel" | 
-                                "tel-country-code" |
-                                "tel-national" | 
-                                "tel-area-code" | 
-                                "tel-local" |
-                                "tel-extension" | 
-                                "impp" | 
-                                "url" |
-                                "photo";
+        "on" |
+        "name" |
+        "honorific-prefix" |
+        "given-name" |
+        "additional-name" |
+        "family-name" |
+        "honorific-suffix" |
+        "nickname" |
+        "email" |
+        "username" |
+        "new-password" |
+        "current-password" |
+        "one-time-code" |
+        "organization-title" |
+        "organization" |
+        "street-address" |
+        "address-line1" |
+        "address-line2" |
+        "address-line3" |
+        "address-level4" |
+        "address-level3" |
+        "address-level2" |
+        "address-level1" |
+        "country" |
+        "country-name" |
+        "postal-code" |
+        "cc-name" |
+        "cc-given-name" |
+        "cc-additional-name" |
+        "cc-family-name" |
+        "cc-number" |
+        "cc-exp" |
+        "cc-exp-month" |
+        "cc-exp-year" |
+        "cc-csc" |
+        "cc-type" |
+        "transaction-currency" |
+        "transaction-amount" |
+        "language" |
+        "bday" |
+        "bday-day" |
+        "bday-month" |
+        "bday-year" |
+        "sex" |
+        "tel" |
+        "tel-country-code" |
+        "tel-national" |
+        "tel-area-code" |
+        "tel-local" |
+        "tel-extension" |
+        "impp" |
+        "url" |
+        "photo";
         /**
           * Whether the input should be disabled. Defaults to `false`
          */
@@ -596,11 +684,11 @@ declare namespace LocalJSX {
         /**
           * Emits a `changeUpdate` event whenever the input is changed. Fires after the input loses focus
          */
-        "onChangeUpdate"?: (event: CustomEvent<string>) => void;
+        "onChangeUpdate"?: (event: SdInputCustomEvent<string>) => void;
         /**
           * Emits a `inputUpdate` event whenever the input is changed. Fires every time something is typed into the input
          */
-        "onInputUpdate"?: (event: CustomEvent<{data: string | null, inputType: string}>) => void;
+        "onInputUpdate"?: (event: SdInputCustomEvent<{ data: string | null, inputType: string }>) => void;
         /**
           * A validation regex for the input. Will show a checkmark next to the input when validated
          */
@@ -643,59 +731,59 @@ declare namespace LocalJSX {
           * The autocomplete type for the select element. Values taken from here: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
          */
         "autocomplete"?: "off" |
-                                "on" |
-                                "name" |
-                                "honorific-prefix" |
-                                "given-name" |
-                                "additional-name" |
-                                "family-name" |
-                                "honorific-suffix" |
-                                "nickname" |
-                                "email" |
-                                "username" |
-                                "new-password" |
-                                "current-password" |
-                                "one-time-code" |
-                                "organization-title" |
-                                "organization" |
-                                "street-address" |
-                                "address-line1" |
-                                "address-line2" |
-                                "address-line3" |
-                                "address-level4" |
-                                "address-level3" |
-                                "address-level2" |
-                                "address-level1" |
-                                "country" |
-                                "country-name" |
-                                "postal-code" |
-                                "cc-name" |
-                                "cc-given-name" |
-                                "cc-additional-name" |
-                                "cc-family-name" | 
-                                "cc-number" | 
-                                "cc-exp" | 
-                                "cc-exp-month" | 
-                                "cc-exp-year" | 
-                                "cc-csc" | 
-                                "cc-type" |
-                                "transaction-currency" | 
-                                "transaction-amount" |
-                                "language" |
-                                "bday" |
-                                "bday-day" | 
-                                "bday-month" | 
-                                "bday-year" | 
-                                "sex" | 
-                                "tel" | 
-                                "tel-country-code" |
-                                "tel-national" | 
-                                "tel-area-code" | 
-                                "tel-local" |
-                                "tel-extension" | 
-                                "impp" | 
-                                "url" |
-                                "photo";
+        "on" |
+        "name" |
+        "honorific-prefix" |
+        "given-name" |
+        "additional-name" |
+        "family-name" |
+        "honorific-suffix" |
+        "nickname" |
+        "email" |
+        "username" |
+        "new-password" |
+        "current-password" |
+        "one-time-code" |
+        "organization-title" |
+        "organization" |
+        "street-address" |
+        "address-line1" |
+        "address-line2" |
+        "address-line3" |
+        "address-level4" |
+        "address-level3" |
+        "address-level2" |
+        "address-level1" |
+        "country" |
+        "country-name" |
+        "postal-code" |
+        "cc-name" |
+        "cc-given-name" |
+        "cc-additional-name" |
+        "cc-family-name" |
+        "cc-number" |
+        "cc-exp" |
+        "cc-exp-month" |
+        "cc-exp-year" |
+        "cc-csc" |
+        "cc-type" |
+        "transaction-currency" |
+        "transaction-amount" |
+        "language" |
+        "bday" |
+        "bday-day" |
+        "bday-month" |
+        "bday-year" |
+        "sex" |
+        "tel" |
+        "tel-country-code" |
+        "tel-national" |
+        "tel-area-code" |
+        "tel-local" |
+        "tel-extension" |
+        "impp" |
+        "url" |
+        "photo";
         /**
           * Whether the select should be automatically focused on load
          */
@@ -727,11 +815,11 @@ declare namespace LocalJSX {
         /**
           * Emits a `changed` event whenever the value of the select is explicitly changed and committed by the user
          */
-        "onChangeUpdate"?: (event: CustomEvent<InputEvent>) => void;
+        "onChangeUpdate"?: (event: SdSelectCustomEvent<InputEvent>) => void;
         /**
           * Emits an `input` event whenever the value of the select is changed by the user
          */
-        "onInputUpdate"?: (event: CustomEvent<InputEvent>) => void;
+        "onInputUpdate"?: (event: SdSelectCustomEvent<InputEvent>) => void;
         /**
           * The select options. Can be set by passing in a JSON string or by setting the property through JavaScript.
          */
@@ -774,11 +862,11 @@ declare namespace LocalJSX {
         /**
           * Emits a `changeUpdate` event whenever the textarea is changed. Fires after the textarea loses focus
          */
-        "onChangeUpdate"?: (event: CustomEvent<InputEvent>) => void;
+        "onChangeUpdate"?: (event: SdTextareaCustomEvent<InputEvent>) => void;
         /**
           * Emits a `inputUpdate` event whenever the textarea is changed. Fires every time something is typed into the textarea
          */
-        "onInputUpdate"?: (event: CustomEvent<InputEvent>) => void;
+        "onInputUpdate"?: (event: SdTextareaCustomEvent<InputEvent>) => void;
         /**
           * The placeholder value for the input field
          */
@@ -798,9 +886,10 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "sd-button": SdButton;
-        "sd-button-group": SdButtonGroup;
         "sd-canvas": SdCanvas;
+        "sd-checkbox": SdCheckbox;
         "sd-details": SdDetails;
+        "sd-group": SdGroup;
         "sd-header": SdHeader;
         "sd-input": SdInput;
         "sd-label": SdLabel;
@@ -814,9 +903,10 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "sd-button": LocalJSX.SdButton & JSXBase.HTMLAttributes<HTMLSdButtonElement>;
-            "sd-button-group": LocalJSX.SdButtonGroup & JSXBase.HTMLAttributes<HTMLSdButtonGroupElement>;
             "sd-canvas": LocalJSX.SdCanvas & JSXBase.HTMLAttributes<HTMLSdCanvasElement>;
+            "sd-checkbox": LocalJSX.SdCheckbox & JSXBase.HTMLAttributes<HTMLSdCheckboxElement>;
             "sd-details": LocalJSX.SdDetails & JSXBase.HTMLAttributes<HTMLSdDetailsElement>;
+            "sd-group": LocalJSX.SdGroup & JSXBase.HTMLAttributes<HTMLSdGroupElement>;
             "sd-header": LocalJSX.SdHeader & JSXBase.HTMLAttributes<HTMLSdHeaderElement>;
             "sd-input": LocalJSX.SdInput & JSXBase.HTMLAttributes<HTMLSdInputElement>;
             "sd-label": LocalJSX.SdLabel & JSXBase.HTMLAttributes<HTMLSdLabelElement>;

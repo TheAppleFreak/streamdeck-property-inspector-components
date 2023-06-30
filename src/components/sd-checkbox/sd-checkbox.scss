@@ -1,0 +1,42 @@
+@import "../common";
+
+:host {
+  min-height: 26px;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+label {
+  font-size: 9pt;
+  color: var(--sdpi-color);
+  font-weight: normal;
+  margin-right: 8px;
+  margin-top: 2px;
+  -webkit-user-select: none;
+  min-height: initial !important;
+
+  &:after{
+    content: " " !important;
+  }
+  
+  span {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: 0px 4px 2px 0;
+    border-radius: 3px;
+    vertical-align: middle;
+    background: var(--sdpi-background);
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+
+    input[type=checkbox]:checked + & {
+      background-color: #77f;
+      background-repeat: no-repeat;
+      background-position: center center;
+      border: 1px solid rgba(0, 0, 0, 0.4);
+    }
+  }
+}

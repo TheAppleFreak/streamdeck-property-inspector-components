@@ -1,15 +1,15 @@
 import { Component, Host, h, Prop } from "@stencil/core";
 
 @Component({
-    tag: "sd-button-group",
-    styleUrl: "sd-button-group.scss",
+    tag: "sd-group",
+    styleUrl: "sd-group.scss",
     shadow: true,
 })
-export class SdButtonGroup {
+export class SdGroup {
     /**
      * The display label for the button group
      */
-    @Prop({reflect: true}) label: string = "";
+    @Prop({ reflect: true }) label: string = "";
 
     render() {
         return (

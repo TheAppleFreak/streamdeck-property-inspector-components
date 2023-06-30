@@ -14,22 +14,22 @@ export class SdDetails {
     /**
      * The display label for the details element
      */
-    @Prop({reflect: true}) label: string = "";
-    
+    @Prop({ reflect: true }) label: string = "";
+
     /**
      * The summary message for the details element
      */
-    @Prop({reflect: true}) summary: string = "";
+    @Prop({ reflect: true }) summary: string = "";
 
     /** 
      * Whether the details element should initially be open (`true`) or closed (`false`). Defaults to `false`
      */
-    @Prop({reflect: true, mutable: true}) opened: boolean = false;
-    
+    @Prop({ reflect: true, mutable: true }) opened: boolean = false;
+
     /** 
      * Whether the text should have margins on the text elements
      */
-    @Prop({reflect: true}) innerMargins: boolean = true;
+    @Prop({ reflect: true }) innerMargins: boolean = true;
 
     private _details: HTMLDetailsElement;
 
@@ -76,22 +76,22 @@ export class SdDetails {
 
     render() {
         return (
-            <Host style={!this.includeLabel ? {maxWidth: "none"} : undefined}>
+            <Host style={!this.includeLabel ? { maxWidth: "none" } : undefined}>
                 {
-                    !this.innerMargins 
-                    ? <style>{this.noInnerMarginsStyle}</style>
-                    : undefined
+                    !this.innerMargins
+                        ? <style>{this.noInnerMarginsStyle}</style>
+                        : undefined
                 }
                 {
                     this.includeLabel
-                    ? <sd-label text={this.label}></sd-label>
-                    : undefined
+                        ? <sd-label text={this.label}></sd-label>
+                        : undefined
                 }
-                <details class={{"value": this.includeLabel}} open={this.opened} ref={(el => this._details = el as HTMLDetailsElement )}>
+                <details class={{ "value": this.includeLabel }} open={this.opened} ref={(el => this._details = el as HTMLDetailsElement)}>
                     {
                         this.summary
-                        ? <summary>{this.summary}</summary>
-                        : undefined
+                            ? <summary>{this.summary}</summary>
+                            : undefined
                     }
                     <slot />
                 </details>

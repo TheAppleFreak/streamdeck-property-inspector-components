@@ -15,73 +15,73 @@ export class SdSelect {
     /**
      * Whether to include the label in the rendered HTML. Useful when used in a button group
      */
-     @Prop() includeLabel: boolean = true;
+    @Prop() includeLabel: boolean = true;
 
     /**
      * The display label for the select element
      */
-    @Prop({reflect: true}) label: string = "";
+    @Prop({ reflect: true }) label: string = "";
 
     /**
      * The autocomplete type for the select element. Values taken from here:
      * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
      */
-    @Prop({reflect: true}) autocomplete: 
-                                "off" |
-                                "on" |
-                                "name" |
-                                "honorific-prefix" |
-                                "given-name" |
-                                "additional-name" |
-                                "family-name" |
-                                "honorific-suffix" |
-                                "nickname" |
-                                "email" |
-                                "username" |
-                                "new-password" |
-                                "current-password" |
-                                "one-time-code" |
-                                "organization-title" |
-                                "organization" |
-                                "street-address" |
-                                "address-line1" |
-                                "address-line2" |
-                                "address-line3" |
-                                "address-level4" |
-                                "address-level3" |
-                                "address-level2" |
-                                "address-level1" |
-                                "country" |
-                                "country-name" |
-                                "postal-code" |
-                                "cc-name" |
-                                "cc-given-name" |
-                                "cc-additional-name" |
-                                "cc-family-name" | 
-                                "cc-number" | 
-                                "cc-exp" | 
-                                "cc-exp-month" | 
-                                "cc-exp-year" | 
-                                "cc-csc" | 
-                                "cc-type" |
-                                "transaction-currency" | 
-                                "transaction-amount" |
-                                "language" |
-                                "bday" |
-                                "bday-day" | 
-                                "bday-month" | 
-                                "bday-year" | 
-                                "sex" | 
-                                "tel" | 
-                                "tel-country-code" |
-                                "tel-national" | 
-                                "tel-area-code" | 
-                                "tel-local" |
-                                "tel-extension" | 
-                                "impp" | 
-                                "url" |
-                                "photo" 
-                            = "off";
+    @Prop({ reflect: true }) autocomplete:
+        "off" |
+        "on" |
+        "name" |
+        "honorific-prefix" |
+        "given-name" |
+        "additional-name" |
+        "family-name" |
+        "honorific-suffix" |
+        "nickname" |
+        "email" |
+        "username" |
+        "new-password" |
+        "current-password" |
+        "one-time-code" |
+        "organization-title" |
+        "organization" |
+        "street-address" |
+        "address-line1" |
+        "address-line2" |
+        "address-line3" |
+        "address-level4" |
+        "address-level3" |
+        "address-level2" |
+        "address-level1" |
+        "country" |
+        "country-name" |
+        "postal-code" |
+        "cc-name" |
+        "cc-given-name" |
+        "cc-additional-name" |
+        "cc-family-name" |
+        "cc-number" |
+        "cc-exp" |
+        "cc-exp-month" |
+        "cc-exp-year" |
+        "cc-csc" |
+        "cc-type" |
+        "transaction-currency" |
+        "transaction-amount" |
+        "language" |
+        "bday" |
+        "bday-day" |
+        "bday-month" |
+        "bday-year" |
+        "sex" |
+        "tel" |
+        "tel-country-code" |
+        "tel-national" |
+        "tel-area-code" |
+        "tel-local" |
+        "tel-extension" |
+        "impp" |
+        "url" |
+        "photo"
+        = "off";
 
     /**
      * Whether the select should be automatically focused on load
@@ -102,19 +102,19 @@ export class SdSelect {
      * Whether the select should allow for multiple selections
      */
     @Prop({ reflect: true }) multiple: boolean = false;
-    
+
     /**
      * The name attribute for the select control
      */
     @Prop({ reflect: true }) name: string = "";
-    
+
     /**
      * The select options. Can be set by passing in a JSON string or by setting the property through JavaScript.
      */
-    @Prop({ reflect: true }) options: 
+    @Prop({ reflect: true }) options:
         string |
         Array<Option | OptGroup>;
-    
+
     @Watch("options")
     parseOptions() {
         if (typeof this.options === "string") {
@@ -161,10 +161,10 @@ export class SdSelect {
 
     generateOption(option: Option) {
         return (
-            <option 
-                label={option.label} 
-                disabled={option.disabled} 
-                selected={option.selected} 
+            <option
+                label={option.label}
+                disabled={option.disabled}
+                selected={option.selected}
                 value={option.value}
             >
                 {option.text}
@@ -174,8 +174,8 @@ export class SdSelect {
 
     generateOptGroup(optgroup: OptGroup) {
         return (
-            <optgroup 
-                label={optgroup.label} 
+            <optgroup
+                label={optgroup.label}
                 disabled={optgroup.disabled}
             >
                 {optgroup.options.map(option => {
@@ -190,8 +190,8 @@ export class SdSelect {
             <Host>
                 {
                     this.includeLabel
-                    ? <sd-label text={this.label}></sd-label>
-                    : undefined
+                        ? <sd-label text={this.label}></sd-label>
+                        : undefined
                 }
                 <select
                     id={this.generatedId}
@@ -223,16 +223,16 @@ export class SdSelect {
 
 export type Option = {
     type: "option",
-    disabled?: boolean, 
-    label?: string, 
-    selected?: boolean, 
-    value?: string, 
+    disabled?: boolean,
+    label?: string,
+    selected?: boolean,
+    value?: string,
     text: string
 };
 
 export type OptGroup = {
     type: "optgroup",
-    disabled?: boolean, 
-    label: string, 
+    disabled?: boolean,
+    label: string,
     options: Option[]
 };

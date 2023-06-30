@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { SdButtonGroup } from '../sd-button-group';
+import { SdCheckbox } from '../sd-checkbox';
 
-describe('sd-button-group', () => {
+describe('sd-checkbox', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [SdButtonGroup],
-      html: `<sd-button-group></sd-button-group>`,
+      components: [SdCheckbox],
+      html: `<sd-checkbox></sd-checkbox>`,
     });
     expect(page.root).toEqualHtml(`
-      <sd-button-group>
+      <sd-checkbox>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </sd-button-group>
+      </sd-checkbox>
     `);
   });
 });

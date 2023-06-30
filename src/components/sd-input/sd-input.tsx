@@ -9,22 +9,22 @@ export class SdInput {
     /**
      * The display label for the input
      */
-    @Prop({reflect: true}) label: string;
-    
+    @Prop({ reflect: true }) label: string;
+
     /**
      * The hover text for the form entry
      */
-    @Prop({reflect: true}) altText: string;
-    
+    @Prop({ reflect: true }) altText: string;
+
     /**
      * Whether the input should be read only. Defaults to `false`
      */
-    @Prop({reflect: true}) readonly: boolean = false;
-    
+    @Prop({ reflect: true }) readonly: boolean = false;
+
     /**
      * Whether the input should be disabled. Defaults to `false`
      */
-    @Prop({reflect: true}) disabled: boolean = false;
+    @Prop({ reflect: true }) disabled: boolean = false;
 
     /**
      * The type for the input box. Defaults to `text`
@@ -34,12 +34,12 @@ export class SdInput {
     /**
      * A predefined value for the input
      */
-    @Prop({reflect: true, mutable: true}) value: string;
+    @Prop({ reflect: true, mutable: true }) value: string;
 
     /**
      * The placeholder value for the input field
      */
-    @Prop({reflect: true}) placeholder?: string;
+    @Prop({ reflect: true }) placeholder?: string;
 
     /**
      * Whether or not the input is required. Defaults to `false`
@@ -49,73 +49,73 @@ export class SdInput {
     /**
      * A validation regex for the input. Will show a checkmark next to the input when validated
      */
-    @Prop({reflect: true}) pattern?: string;
+    @Prop({ reflect: true }) pattern?: string;
 
     /**
      * The input mode to use for virtual keyboards
      */
-    @Prop({reflect: true}) inputmode?: "none" | "text" | "decimal" | "numeric" | "tel" | "search" | "email" | "url";
+    @Prop({ reflect: true }) inputmode?: "none" | "text" | "decimal" | "numeric" | "tel" | "search" | "email" | "url";
 
     /**
      * The autocomplete type for the select element. Values taken from here:
      * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
      */
-    @Prop({reflect: true}) autocomplete: 
-                                "off" |
-                                "on" |
-                                "name" |
-                                "honorific-prefix" |
-                                "given-name" |
-                                "additional-name" |
-                                "family-name" |
-                                "honorific-suffix" |
-                                "nickname" |
-                                "email" |
-                                "username" |
-                                "new-password" |
-                                "current-password" |
-                                "one-time-code" |
-                                "organization-title" |
-                                "organization" |
-                                "street-address" |
-                                "address-line1" |
-                                "address-line2" |
-                                "address-line3" |
-                                "address-level4" |
-                                "address-level3" |
-                                "address-level2" |
-                                "address-level1" |
-                                "country" |
-                                "country-name" |
-                                "postal-code" |
-                                "cc-name" |
-                                "cc-given-name" |
-                                "cc-additional-name" |
-                                "cc-family-name" | 
-                                "cc-number" | 
-                                "cc-exp" | 
-                                "cc-exp-month" | 
-                                "cc-exp-year" | 
-                                "cc-csc" | 
-                                "cc-type" |
-                                "transaction-currency" | 
-                                "transaction-amount" |
-                                "language" |
-                                "bday" |
-                                "bday-day" | 
-                                "bday-month" | 
-                                "bday-year" | 
-                                "sex" | 
-                                "tel" | 
-                                "tel-country-code" |
-                                "tel-national" | 
-                                "tel-area-code" | 
-                                "tel-local" |
-                                "tel-extension" | 
-                                "impp" | 
-                                "url" |
-                                "photo" 
-                            = "off";
+    @Prop({ reflect: true }) autocomplete:
+        "off" |
+        "on" |
+        "name" |
+        "honorific-prefix" |
+        "given-name" |
+        "additional-name" |
+        "family-name" |
+        "honorific-suffix" |
+        "nickname" |
+        "email" |
+        "username" |
+        "new-password" |
+        "current-password" |
+        "one-time-code" |
+        "organization-title" |
+        "organization" |
+        "street-address" |
+        "address-line1" |
+        "address-line2" |
+        "address-line3" |
+        "address-level4" |
+        "address-level3" |
+        "address-level2" |
+        "address-level1" |
+        "country" |
+        "country-name" |
+        "postal-code" |
+        "cc-name" |
+        "cc-given-name" |
+        "cc-additional-name" |
+        "cc-family-name" |
+        "cc-number" |
+        "cc-exp" |
+        "cc-exp-month" |
+        "cc-exp-year" |
+        "cc-csc" |
+        "cc-type" |
+        "transaction-currency" |
+        "transaction-amount" |
+        "language" |
+        "bday" |
+        "bday-day" |
+        "bday-month" |
+        "bday-year" |
+        "sex" |
+        "tel" |
+        "tel-country-code" |
+        "tel-national" |
+        "tel-area-code" |
+        "tel-local" |
+        "tel-extension" |
+        "impp" |
+        "url" |
+        "photo"
+        = "off";
 
     /**
      * Emits a `changeUpdate` event whenever the input is changed. Fires after the input loses focus
@@ -128,7 +128,7 @@ export class SdInput {
     /**
      * Emits a `inputUpdate` event whenever the input is changed. Fires every time something is typed into the input
      */
-    @Event() inputUpdate: EventEmitter<{data: string | null, inputType: string}>;
+    @Event() inputUpdate: EventEmitter<{ data: string | null, inputType: string }>;
     inputUpdateHandler = (ev: InputEvent) => {
         this.value = (ev.target as HTMLInputElement).value;
         this.inputUpdate.emit({
@@ -141,15 +141,15 @@ export class SdInput {
         return (
             <Host title={this.altText}>
                 <sd-label text={this.label}></sd-label>
-                <input class="value" 
+                <input class="value"
                     type={this.type}
                     value={this.value}
-                    required={this.required} 
-                    placeholder={this.placeholder} 
+                    required={this.required}
+                    placeholder={this.placeholder}
                     readonly={this.readonly}
                     disabled={this.disabled}
                     pattern={this.pattern}
-                    onChange={this.changeUpdateHandler} 
+                    onChange={this.changeUpdateHandler}
                     onInput={this.inputUpdateHandler}
                 >
                 </input>
